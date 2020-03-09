@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="br-pagebody">
+    <div class="br-section-wrapper">
+        <div id="wizard2">
+            <h3>Add Project cordinator</h3>
+            <section>
+                <form method="post">
+                    {% csrf_token %}
+                        {{user_form}}
+                        {{user_profile_form}}
+                    <div class="form-group wd-xs-150">
+                        <button class="btn btn-info disabled btn-block mg-b-10">Save</button>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+  {% endblock  %}
+
+
+

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <style>
+    .sallary select {
+    text-transform: none;
+    width: 30%;
+    margin-left: 20px;
+    }
+    .asteriskField{
+        display: none;
+    }
+    </style>
+
+    <div class="container">
+    <form action="" class="mg-t-80 form-layout form-layout-4" method="post">
+        <div class="row ">
+            {% csrf_token %}
+            <div class="col-6">
+                <h4>Personal information</h4>
+             {{ form.first_name|as_crispy_field }}
+            </div><!--personal info-->
+            <div class="col-6">
+                <h4>Project information</h4>
+             {{ form.project_name|as_crispy_field }}
+            </div><!--project info-->
+             <div class="col-6">{{ form.last_name|as_crispy_field }}</div><!--personal info-->
+            <div class="col-6">{{ form.donor|as_crispy_field }}</div><!--project info-->
+            <div class="col-6">{{ form.sex|as_crispy_field }}</div><!--personal info-->
+            <div class="col-6">{{ form.campus|as_crispy_field }}</div><!--project info-->
+            <div class="col-6">{{ form.nationality|as_crispy_field }}</div>
+            <div class="col-6">{{ form.college|as_crispy_field }}</div><!--project info-->
+             <div class="col-6">{{ form.position|as_crispy_field }}</div>
+            <div class="col-6">{{ form.degree|as_crispy_field }}</div>
+            <div class="col-6">{{ form.domain|as_crispy_field }}</div>
+            <div class="col-6">{{ form.status_in_ur|as_crispy_field }}</div>
+
+             <div class="col-6">{{ form.recruitment_date|as_crispy_field }}</div>
+            <div class="col-6">{{ form.contract_expiration|as_crispy_field }}</div>
+             <div class="col-6 sallary">{{ form.gross_salary|as_crispy_field }}</div>
+
+{#            <div class="col-6">#}
+{#             {{ form.currency|as_crispy_field }}#}
+{#            </div>#}
+
+            <div class="col-6">
+             {{ form.phone|as_crispy_field }}
+            </div>
+            <div class="col-6">
+             {{ form.email|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+             {{ form.national_id|as_crispy_field }}
+            </div>
+            <div class="col-6">
+             {{ form.rssb_number|as_crispy_field }}
+            </div>
+
+        </div>
+          <div class="form-layout-footer mg-t-30">
+             <button class="btn btn-info">Save Project Team</button>
+          </div><!-- form-layout-footer -->
+    </form>
+    </div>
+
+{% endblock %}

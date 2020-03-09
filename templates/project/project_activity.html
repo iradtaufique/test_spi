@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <form action="" method="post" class="mg-t-80 form-layout form-layout-4">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="form-layout-footer mg-t-30">
+             <button class="btn btn-info">Save Activity</button>
+          </div><!-- form-layout-footer -->
+        </form>
+    </div>
+
+{% endblock %}

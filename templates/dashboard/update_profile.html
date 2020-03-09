@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    
+    <div class="row row-sm mg-t-20">
+
+        <div class="col-sm-6 col-lg-10 mg-t-20 mg-sm-t-0 m-auto">
+        <div class="card shadow-base widget-7">
+            <div class="tx-center">
+            <img src="{{ user.profile.image.url}}"  class="wd-100 rounded-circle" alt="">
+            <h4 class="tx-normal tx-inverse tx-roboto mg-t-20 mg-b-2">{{ user.username }}</h4>
+            <p class="mg-b-20">{{ user.email }}</p>
+            <p class="mg-b-20">
+                <form method="post" novalidate enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="mg-b-0">
+                    {{ p_form}}
+                </p>
+                    
+            </p>
+                <p class="mg-b-0">
+                    <button type="submit" class="btn btn-info pd-x-50">Update</button>
+                </p>
+            </form> 
+             
+
+
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+    

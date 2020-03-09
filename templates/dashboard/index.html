@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="br-pagetitle">
+    <i class="icon ion-ios-home-outline"></i>
+    <div>
+      <h4>Dashboard </h4>
+
+    </div>
+  </div>
+{% if user.user_profile.role == 2 %}
+    <div class="br-pagebody">
+        <div class="row row-sm mg-t-20">
+
+           {% for info in projectinfo %}
+{#               {% for i in info.projectactivity_set.all %}#}
+            <div class="col-sm-6 col-lg-4 mt-3">
+                <div class="card shadow-base">
+                    <div class="card-header bg-info d-flex justify-content-between align-items-center">
+                        <h6 class="card-title tx-14 mg-b-0">{{info.project_name}}</h6>
+                    </div><!-- card-header -->
+
+                    <div class="card-body">
+
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 text-center">Total Number of Activities: {{ info.num_activity }}</p>
+
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 text-center">Ongoing Activities: {{ info.sta }}</p>
+
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 text-center">Pending Activities</p>
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 text-center">Suspended Activities 4</p>
+
+                    </div><!-- card-body -->
+
+                </div><!-- card -->
+            </div><!-- col-4 -->
+{#                   {% endfor %}#}
+           {% endfor %}
+        </div><!-- row -->
+
+     <!--snippets for charts on dashboard -->
+        <div class="row row-sm mg-t-20">
+            <div class="col-lg-12 br-section-wrapper mb-3">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <h4>Ongoing Projects</h4>
+                        <div class="bd pd-t-30 pd-b-20 pd-x-20"><canvas id="chartBar1" height="200"></canvas></div>
+                    </div><!-- col-6 -->
+                    <div class="col-xl-6 mg-t-20 mg-xl-t-0">
+                        <h4>Pending Projects</h4>
+                        <div class="bd pd-t-30 pd-b-20 pd-x-20"><canvas id="chartBar2" height="200"></canvas></div>
+                    </div><!-- col-6 -->
+                </div><!-- row -->
+            </div><!-- col-12 -->
+        </div><!-- row -->
+
+  </div><!-- br-pagebody -->
+
+  <!--snippets for project manager to view all activities within his project -->
+  {% elif user.user_profile.role == 1 %}
+
+    <div class="br-pagetitle">
+        <i class="icon ion-ios-home-outline"></i>
+        <div><h4>Dashboard</h4></div>
+    </div>
+
+      <div class="br-pagebody">
+        <div class="row row-sm mg-t-20">
+            {% for info in project_activity %}
+            <div class="col-sm-6 col-lg-4">
+                <div class="card shadow-base h-100">
+                    <div class="card-header bg-info d-flex justify-content-between align-items-center">
+                        <h6 class="card-title tx-14 mg-b-0 ">Activity Name: <b class="text-white">{{info.activity_name}}</b></h6>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 "><b class="text-info">Activity Phase:</b> {{ info.phase }}</p>
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 "><b class="text-info">Activity Status:</b> {{ info.status }}</p>
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 "><b class="text-info">Start Date:</b> {{ info.start_date }}</p>
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 "><b class="text-info">End Date:</b> {{ info.end_date }}</p>
+                        <p class="tx-sm tx-inverse tx-medium mg-b-0 "><b class="text-info">Output:</b> {{ info.output }}</p>
+                    </div><!-- card-body -->
+{#            <div id="ch1" class="ht-50 tr-y-1"></div>#}
+                </div><!-- card -->
+            </div><!-- col-4 -->
+            {% endfor %}
+        </div><!-- row -->
+
+     <!--snippets for charts on dashboard -->
+        <div class="row row-sm mg-t-20">
+            <div class="col-lg-12 br-section-wrapper mb-3">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <h4>Ongoing Projects</h4>
+                        <div class="bd pd-t-30 pd-b-20 pd-x-20"><canvas id="chartBar1" height="200"></canvas></div>
+                    </div><!-- col-6 -->
+                    <div class="col-xl-6 mg-t-20 mg-xl-t-0">
+                        <h4>Pending Projects</h4>
+                        <div class="bd pd-t-30 pd-b-20 pd-x-20"><canvas id="chartBar2" height="200"></canvas></div>
+                    </div><!-- col-6 -->
+                </div><!-- row -->
+            </div><!-- col-12 -->
+        </div><!-- row -->
+
+  </div><!-- br-pagebody -->
+
+  {% endif %}
+
+{% endblock  %}
+    
+
